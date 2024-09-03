@@ -17,7 +17,7 @@ const jsonp = ({ url, params, callbackName }) => {
     scriptNode.src = completeURL()
 
     // 成功获取数据
-    window[callbackName] = data => {
+    window[callbackName] = (data) => {
       resolve(data)
       scriptNode.remove() // 获取完数据后，就移除创建的script节点
     }

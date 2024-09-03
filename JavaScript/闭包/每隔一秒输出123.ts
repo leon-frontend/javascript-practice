@@ -8,12 +8,14 @@
 
 // 使用闭包实现
 function count() {
-  for (var i = 1; i < 5; i++) {
-    (function(i){
+  for (var i = 1; i < 4; i++) {
+    ;(function (i) {
       setTimeout(() => {
-        console.log(i);
-      }, 1000*i);
+        console.log(i)
+      }, 1000 * i)
     })(i)
   }
 }
+
+// 函数调用
 count()

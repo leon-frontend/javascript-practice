@@ -15,8 +15,6 @@
 // }
 // console.log(replaceStr(str, obj));
 
-
-
 // 2. 一段文章text有若干个句子,长度为len,文本中不含标点符号但有空格,其中存在着许多单词"coder”,请统计该单词出现过多少次?
 // （不区分单词中每个字母的大小写)，使用将大写转换为小写的方法，用js实现这个问题。
 const text = 'you have coderson in coder li COder coder icoder'
@@ -25,7 +23,7 @@ const countSum = (text) => {
   const lowerText = text.toLowerCase()
   const reg = /\bcoder\b/g
   const matchArr = lowerText.match(reg)
-  console.log(matchArr);
+  console.log(matchArr)
   return matchArr ? matchArr.length : 0
 }
-console.log(countSum(text));
+console.log(countSum(text))

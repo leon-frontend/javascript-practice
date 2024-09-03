@@ -2,7 +2,7 @@
 const FLOWER_TIME = 3000
 
 const flowerOpen = () => {
-  console.log('花开了！！！！！！');
+  console.log('花开了！！！！！！')
   // 鸟叫
   birdSing()
 }
@@ -11,7 +11,7 @@ const birds = ['AAA', 'BBB']
 const birdSing = () => {
   // 随机选一个鸟
   let random = Math.floor(Math.random() * birds.length)
-  console.log(birds[random]); // 鸟叫
+  console.log(birds[random]) // 鸟叫
 }
 
 flowerOpen()

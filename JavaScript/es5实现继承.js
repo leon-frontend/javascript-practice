@@ -25,7 +25,6 @@
 // console.log(stu.name);
 // console.log(stu.getName());
 
-
 // -------------- 使用构造函数实现继承 --------------
 // function Person(name) {
 //   this.name = name
@@ -70,11 +69,11 @@
 // console.log(m.getName());
 
 // -------------- 使用寄生式继承实现继承 --------------
-function Person(name, age){
+function Person(name, age) {
   this.name = name
   this.age = age
 }
-Person.prototype.getName = function(){
+Person.prototype.getName = function () {
   return this.name
 }
 
@@ -88,4 +87,4 @@ Man.prototype.constructor = Man
 
 // test => 创建Man实例
 let man = new Man('gril', 22)
-console.log(man.getName(), man.age);
+console.log(man.getName(), man.age)

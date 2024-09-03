@@ -1,21 +1,24 @@
 // https://juejin.cn/post/7026715822550679583
 // http://www.seozhijia.net/javascript/238.html
 let obj1 = {
-  a: [{
-      x: 2
-  }, {
-      y: 4
-  }],
+  a: [
+    {
+      x: 2,
+    },
+    {
+      y: 4,
+    },
+  ],
   b: 1,
-  c: 'bar'
+  c: 'bar',
 }
 
 let obj2 = {
   a: {
-      z: 3
+    z: 3,
   },
   b: [2, 3],
-  c: 'foo'
+  c: 'foo',
 }
 
 // --------------- 合并两个对象 ---------------
@@ -34,4 +37,4 @@ const merge = (...objs) => {
   }
   return res
 }
-console.log(merge(obj1, obj2));
+console.log(merge(obj1, obj2))

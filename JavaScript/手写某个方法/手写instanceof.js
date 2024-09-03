@@ -7,5 +7,5 @@ function myInstanceof(L, R) {
   return false
 }
 
-const arr = [1,2,3,4]
-console.log(myInstanceof(arr, Number));
+const arr = [1, 2, 3, 4]
+console.log(myInstanceof(arr, Number))

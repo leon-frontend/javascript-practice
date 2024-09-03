@@ -1,5 +1,5 @@
 // 手写bind
-Function.prototype.myBind = function(context, ...args1) {
+Function.prototype.myBind = function (context, ...args1) {
   // 判断mybind只能被函数调用
   if (typeof this !== 'function') {
     throw new TypeError('Error')
@@ -25,38 +25,36 @@ Function.prototype.myBind = function(context, ...args1) {
   return fnBind
 }
 
-
 // ---------- 测试普通函数的调用 ------------
 function fn(...args) {
-  console.log(this.name,this.age, ...args)
+  console.log(this.name, this.age, ...args)
 }
 
 let obj = {
   name: 'Alice',
-  age: 20
+  age: 20,
 }
 
 let obj2 = {
-  name: 'Bob'
+  name: 'Bob',
 }
 
 // 方式一：只在bind中传递函数参数
-fn.myBind(obj,1,2)()
+fn.myBind(obj, 1, 2)()
 // 方式二：在bind中传递函数参数，也在返回函数中传递参数
-const f1 = fn.myBind(obj,1)(2)
+const f1 = fn.myBind(obj, 1)(2)
 const f2 = f1.myBind(obj2, 5)
-console.log(f2);
-
+console.log(f2)
 
 // ---------- 测试构造函数的调用 ------------
 function Person(name, age) {
   this.name = name
   this.age = age
-  console.log(this.name,'and',this.age)
+  console.log(this.name, 'and', this.age)
 }
 
 // 构造函数调用bind方法
-const PersonBind = Person.myBind(obj,'Bob',12)
+const PersonBind = Person.myBind(obj, 'Bob', 12)
 // 创建PersonBind的实例对象，其实是创建Person的实例
 const bob = new PersonBind()
-console.log(bob);
+console.log(bob)

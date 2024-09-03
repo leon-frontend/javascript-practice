@@ -30,20 +30,21 @@
 // console.log(deleteDuplicate(arr));
 
 // --------------------- 有序数组去重 --------------------------
-const nums = [1, 1, 2, 2, 2, 3, 4, 4, 4, 5];
+const nums = [1, 1, 2, 2, 2, 3, 4, 4, 4, 5]
 function deleteDuplicate(nums) {
   if (!nums.length || nums.length === 1) return nums
 
-  let slow = 0, fast = 1
+  let slow = 0,
+    fast = 1
   while (fast < nums.length) {
     if (nums[slow] !== nums[fast]) {
       slow++
-      [nums[slow], nums[fast]] = [nums[fast], nums[slow]]
+      ;[nums[slow], nums[fast]] = [nums[fast], nums[slow]]
     }
     fast++
   }
 
   nums.splice(slow + 1)
-  return nums  
+  return nums
 }
-console.log(deleteDuplicate(nums));
+console.log(deleteDuplicate(nums))

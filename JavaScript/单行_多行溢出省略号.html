@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    /* .demo {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* .demo {
       width: 200px;
       border: 1px solid red;
       -webkit-line-clamp: 2;
@@ -14,27 +14,26 @@
       overflow: hidden;
     } */
 
-    .demo {
-      width: 400px;
-      height: 40px; /* 设置总高度 */
-      line-height: 20px; /* 设置行高 */
-      overflow: hidden; /* 隐藏超出内容 */
-      position: relative; /* 使伪元素定位相对于父元素 */
-      border: 1px solid red;
-    }
+      .demo {
+        width: 400px;
+        height: 40px; /* 设置总高度 */
+        line-height: 20px; /* 设置行高 */
+        overflow: hidden; /* 隐藏超出内容 */
+        position: relative; /* 使伪元素定位相对于父元素 */
+        border: 1px solid red;
+      }
 
-    .demo::after {
-      content: '...';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      background-color: white; 
-      padding-left: 5px; /* 调整省略号与文本的间距 */
-    }
+      .demo::after {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: white;
+        padding-left: 5px; /* 调整省略号与文本的间距 */
+      }
 
-
-    /* 实现单行一溢出省略号 */
-    /* .demo {
+      /* 实现单行一溢出省略号 */
+      /* .demo {
       background-color: aquamarine;
       width: 200px; 
       /* 设置文字在一行显示，不能换行 */
@@ -43,10 +42,12 @@
       /* overflow: hidden;  */
       /* 规定当文本溢出时，显示省略符号来代表被修剪的文本 */
       /* text-overflow: ellipsis;   */
-    /* } */ 
-  </style>  
-</head>
-<body>
-  <div class='demo'>这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本</div>
-</body>
+      /* } */
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本
+    </div>
+  </body>
 </html>
