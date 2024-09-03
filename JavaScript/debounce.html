@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>Click Me</div>
+  <script>
+    const div = document.querySelector('div')
+    let i = 1
+    function add() {
+      div.innerHTML = i++
+    } 
+
+    // debounce
+    function debounce(fn, t) {
+      let timer = null
+      return function () {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => fn(), t)
+      }
+    }
+
+    div.addEventListener('click', debounce(add, 1000))
+  </script>
+</body>
+</html>

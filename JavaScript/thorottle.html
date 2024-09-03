@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      overflow-y: scroll;
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let i = 1
+    function add() {
+      console.log(i);
+      i++
+    }
+    window.addEventListener('scroll', throttle(add, 2000))
+    // window.addEventListener('scroll', add)
+
+    // throttle
+    function throttle(fn, time) {
+      let timer = null
+      return function () {
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn()
+            timer = null
+          }, time);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

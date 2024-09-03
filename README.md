@@ -1,2 +1,2 @@
-# algorithm-practice
-算法练习
+- **JavaScript 文件夹**：存放和 JS 相关的算法代码。
+- **Sort 文件夹**：存放和"排序"相关的算法代码。

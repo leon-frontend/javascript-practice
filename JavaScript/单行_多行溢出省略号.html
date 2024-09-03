@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .demo {
+      width: 200px;
+      border: 1px solid red;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    } */
+
+    .demo {
+      width: 400px;
+      height: 40px; /* 设置总高度 */
+      line-height: 20px; /* 设置行高 */
+      overflow: hidden; /* 隐藏超出内容 */
+      position: relative; /* 使伪元素定位相对于父元素 */
+      border: 1px solid red;
+    }
+
+    .demo::after {
+      content: '...';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: white; 
+      padding-left: 5px; /* 调整省略号与文本的间距 */
+    }
+
+
+    /* 实现单行一溢出省略号 */
+    /* .demo {
+      background-color: aquamarine;
+      width: 200px; 
+      /* 设置文字在一行显示，不能换行 */
+      /* white-space: nowrap;     */
+      /* 文字长度超出限定宽度，则隐藏超出的内容 */
+      /* overflow: hidden;  */
+      /* 规定当文本溢出时，显示省略符号来代表被修剪的文本 */
+      /* text-overflow: ellipsis;   */
+    /* } */ 
+  </style>  
+</head>
+<body>
+  <div class='demo'>这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本这是一段很长的文本</div>
+</body>
+</html>
