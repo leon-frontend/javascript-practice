@@ -32,6 +32,6 @@ function chunk(arr: number[], size: number): number[][] {
 }
 
 // ----------------------- 测试代码 ------------------------
-const arr = [1, 2, 3, 4, 5]
+const arrTest = [1, 2, 3, 4, 5]
 const size = 2
-console.log(chunk(arr, size))
+console.log(chunk(arrTest, size))
