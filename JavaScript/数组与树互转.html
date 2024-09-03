@@ -1,151 +1,149 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    // https://www.jianshu.com/p/36c5e4b49ac9
-    // ------------------- 数组转树 -------------------
-    // 数组数据，该数据没有层次结构
-    // const obj = {
-    //   "city": [
-    //     { "id": 12, "parent_id": 1, "name": "朝阳区" },
-    //     { "id": 241, "parent_id": 24, "name": "田林街道" },
-    //     { "id": 31, "parent_id": 3, "name": "广州市" },
-    //     { "id": 13, "parent_id": 1, "name": "昌平区" },
-    //     { "id": 2421, "parent_id": 242, "name": "上海科技绿洲" },
-    //     { "id": 21, "parent_id": 2, "name": "静安区" },
-    //     { "id": 242, "parent_id": 24, "name": "漕河泾街道" },
-    //     { "id": 22, "parent_id": 2, "name": "黄浦区" },
-    //     { "id": 11, "parent_id": 1, "name": "顺义区" },
-    //     { "id": 2, "parent_id": 0, "name": "上海市" },
-    //     { "id": 24, "parent_id": 2, "name": "徐汇区" },
-    //     { "id": 1, "parent_id": 0, "name": "北京市" },
-    //     { "id": 2422, "parent_id": 242, "name": "漕河泾开发区" },
-    //     { "id": 32, "parent_id": 3, "name": "深圳市" },
-    //     { "id": 33, "parent_id": 3, "name": "东莞市" },
-    //     { "id": 3, "parent_id": 0, "name": "广东省" }
-    //   ]
-    // }
-    // // console.log(obj.city);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // https://www.jianshu.com/p/36c5e4b49ac9
+      // ------------------- 数组转树 -------------------
+      // 数组数据，该数据没有层次结构
+      // const obj = {
+      //   "city": [
+      //     { "id": 12, "parent_id": 1, "name": "朝阳区" },
+      //     { "id": 241, "parent_id": 24, "name": "田林街道" },
+      //     { "id": 31, "parent_id": 3, "name": "广州市" },
+      //     { "id": 13, "parent_id": 1, "name": "昌平区" },
+      //     { "id": 2421, "parent_id": 242, "name": "上海科技绿洲" },
+      //     { "id": 21, "parent_id": 2, "name": "静安区" },
+      //     { "id": 242, "parent_id": 24, "name": "漕河泾街道" },
+      //     { "id": 22, "parent_id": 2, "name": "黄浦区" },
+      //     { "id": 11, "parent_id": 1, "name": "顺义区" },
+      //     { "id": 2, "parent_id": 0, "name": "上海市" },
+      //     { "id": 24, "parent_id": 2, "name": "徐汇区" },
+      //     { "id": 1, "parent_id": 0, "name": "北京市" },
+      //     { "id": 2422, "parent_id": 242, "name": "漕河泾开发区" },
+      //     { "id": 32, "parent_id": 3, "name": "深圳市" },
+      //     { "id": 33, "parent_id": 3, "name": "东莞市" },
+      //     { "id": 3, "parent_id": 0, "name": "广东省" }
+      //   ]
+      // }
+      // // console.log(obj.city);
 
-    // const arrayToTree = (list, root) => {
-    //   // 创建一个Map，用于映射每个对象的id和值
-    //   const map = new Map(), res = []
-    //   // 遍历list，将每个对象的id作为map中的key
-    //   for (let item of list) map.set(item.id, { ...item, children: []})
-      
-    //   // 遍历list，根据parent_id将数组转换为树
-    //   for (let item of list) {
-    //     // 解构出 id 和 parent_id
-    //     const { id, parent_id } = item
-    //     // 如果parent_id是root，直接加入结果数组
-    //     if (parent_id === root) res.push(map.get(id))
-    //     else {
-    //       // 如果不是根元素，则加入父元素的children数组中
-    //       map.get(parent_id).children.push(map.get(id))
-    //     }
-    //   }
-    //   return res
-    // }
-    // console.log(arrayToTree(obj.city, 0));
+      // const arrayToTree = (list, root) => {
+      //   // 创建一个Map，用于映射每个对象的id和值
+      //   const map = new Map(), res = []
+      //   // 遍历list，将每个对象的id作为map中的key
+      //   for (let item of list) map.set(item.id, { ...item, children: []})
 
+      //   // 遍历list，根据parent_id将数组转换为树
+      //   for (let item of list) {
+      //     // 解构出 id 和 parent_id
+      //     const { id, parent_id } = item
+      //     // 如果parent_id是root，直接加入结果数组
+      //     if (parent_id === root) res.push(map.get(id))
+      //     else {
+      //       // 如果不是根元素，则加入父元素的children数组中
+      //       map.get(parent_id).children.push(map.get(id))
+      //     }
+      //   }
+      //   return res
+      // }
+      // console.log(arrayToTree(obj.city, 0));
 
-    // ------------------- 树转数组 -------------------
-    const listTree = [
-      {
-        id: 1,
-        name: '部门1',
-        pid: 0,
-        children: [
-          {
-            id: 2,
-            name: '部门1-1',
-            pid: 1,
-            children: [
-              {
-                id: 4, 
-                name: '部门1-1-1', 
-                pid: 2,
-                children: []
-              }
-            ]
-          },
-          {
-            id: 3,
-            name: '部门1-2',
-            pid: 1,
-            children: [
-              {
-                id: 5, 
-                name: '部门1-2-1', 
-                pid: 3,
-                children: []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: 6,
-        name: '部门2',
-        pid: 0,
-        children: [
-          {
-            id: 7, 
-            name: '部门2-1', 
-            pid: 6,
-            children: []
-          }
-        ]
-      },
-      {
-        id: 8,
-        name: '部门3',
-        pid: 0,
-        children: []
+      // ------------------- 树转数组 -------------------
+      const listTree = [
+        {
+          id: 1,
+          name: '部门1',
+          pid: 0,
+          children: [
+            {
+              id: 2,
+              name: '部门1-1',
+              pid: 1,
+              children: [
+                {
+                  id: 4,
+                  name: '部门1-1-1',
+                  pid: 2,
+                  children: [],
+                },
+              ],
+            },
+            {
+              id: 3,
+              name: '部门1-2',
+              pid: 1,
+              children: [
+                {
+                  id: 5,
+                  name: '部门1-2-1',
+                  pid: 3,
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 6,
+          name: '部门2',
+          pid: 0,
+          children: [
+            {
+              id: 7,
+              name: '部门2-1',
+              pid: 6,
+              children: [],
+            },
+          ],
+        },
+        {
+          id: 8,
+          name: '部门3',
+          pid: 0,
+          children: [],
+        },
+      ]
+
+      // 1. 深度优先遍历
+      // const treeToArrDFS = (tree) => {
+      //   const res = []
+      //   // 这里的tree就是一个数组，数组中的每个元素可能是嵌套的对象
+      //   const recursion = (tree) => {
+      //     // 遍历tree数组
+      //     for (let item of tree) {
+      //       res.push(item)
+      //       if (item.children) {
+      //         recursion(item.children)
+      //         delete item.children
+      //       }
+      //     }
+      //   }
+      //   recursion(tree)
+      //   return res
+      // }
+
+      // 2. 广度优先遍历
+      const treeToArrBFS = (tree) => {
+        // 创建一个队列，每次出队第一个元素，然后将元素的children属性值入队
+        let queue = JSON.parse(JSON.stringify(tree))
+        const res = []
+        while (queue.length) {
+          let obj = queue.shift()
+          // 将出队元素的children属性值入队，值是一个数组
+          if (obj.children) queue = queue.concat(obj.children)
+          // 将obj加入结果数组
+          res.push(obj)
+          delete obj.children // 删除children属性
+        }
+        return res
       }
-    ]
-    
-    // 1. 深度优先遍历
-    // const treeToArrDFS = (tree) => {
-    //   const res = []
-    //   // 这里的tree就是一个数组，数组中的每个元素可能是嵌套的对象
-    //   const recursion = (tree) => {
-    //     // 遍历tree数组
-    //     for (let item of tree) {
-    //       res.push(item)
-    //       if (item.children) {
-    //         recursion(item.children)
-    //         delete item.children
-    //       }
-    //     }        
-    //   }
-    //   recursion(tree)
-    //   return res
-    // }
-
-    // 2. 广度优先遍历
-    const treeToArrBFS = (tree) => {
-      // 创建一个队列，每次出队第一个元素，然后将元素的children属性值入队
-      let queue = JSON.parse(JSON.stringify(tree))
-      const res = []
-      while (queue.length) {
-        let obj = queue.shift()
-        // 将出队元素的children属性值入队，值是一个数组
-        if (obj.children) queue = queue.concat(obj.children)
-        // 将obj加入结果数组
-        res.push(obj)
-        delete obj.children // 删除children属性        
-      }
-      return res 
-    }
-    console.log(listTree);
-    console.log(treeToArrBFS(listTree));
-
-  </script>
-</body>
+      console.log(listTree)
+      console.log(treeToArrBFS(listTree))
+    </script>
+  </body>
 </html>
