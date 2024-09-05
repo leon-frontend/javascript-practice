@@ -1,7 +1,7 @@
 type Fn = (...params: number[]) => number
 
 function memoize(fn: Fn): Fn {
-  // 使用 Map 缓存函数参数和函数值的映射关系
+  // 使用 Map 缓存函数参数和函数值的映射关系，并且使用闭包缓存 Map
   // Map 的键是由 ...params 转换成的字符串，值是函数的返回值
   const cache = new Map<string, number>()
 
@@ -22,11 +22,15 @@ function memoize(fn: Fn): Fn {
   }
 }
 
+// ------------------ 测试代码 ----------------------
 let callCount = 0
 const memoizedFn = memoize(function (a, b) {
+  console.log('函数被调用了！！！！')
   callCount += 1
   return a + b
 })
-memoizedFn(2, 3) // 5
-memoizedFn(2, 3) // 5
+console.log(memoizedFn(2, 3)) // 5，调用函数
+console.log('-------------------------')
+console.log(memoizedFn(2, 3)) // 5，未调用函数
+console.log('-------------------------')
 console.log(callCount) // 1
