@@ -79,5 +79,5 @@ const flatWithLayer = (
 // 测试代码
 const arr2 = [1,2,3,[4,5,6],[7,8,[9,10,11],12],[13,14,15]]
 const n = 1
-console.log(flatWithLayer(arr2, n))
+console.log('带"层级"要求的数组扁平化：', flatWithLayer(arr2, n))
 //#endregion ----------------- 2. 带"层级"要求的数组扁平化 -------------------------
