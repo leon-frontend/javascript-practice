@@ -45,14 +45,15 @@ let version1 = "1.01", version2 = "1.002"
 const versions1 = ['2.1.0.1', '0.402.1', '10.2.1', '5.1.2', '1.0.4.5']
 const versions2 = ['10.2.1', '5.1.2', '2.1.0.1', '1.0.4.5', '0.402.1']
 const versions3 =['0.5.1', '0.1.1', '2.3.3', '0.302.1', '4.2', '4.3.5', '4.3.4.5']
-function sortVersions(versions) {
+function sortVersions(versions: string[]) {
   versions.sort((version1, version2) => {
+    // 将每个字符串元素转换为数组类型，再逐个比较两个数组中的元素
     const arr1 = version1.split('.')
     const arr2 = version2.split('.')
 
     while (arr1.length || arr2.length) {
-      let val1 = +arr1.shift() || 0
-      let val2 = +arr2.shift() || 0
+      let val1 = +(arr1.shift() || 0)
+      let val2 = +(arr2.shift() || 0)
       if (val1 > val2) return -1
       if (val1 < val2) return 1
     }

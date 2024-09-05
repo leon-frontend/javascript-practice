@@ -1,6 +1,20 @@
+/**
+ * 记忆函数:
+ *    请你编写一个函数 fn，它接收另一个函数作为输入，并返回该函数的 记忆化 后的结果。
+ *    记忆函数 是一个对于相同的输入永远不会被调用两次的函数。相反，它将返回一个缓存值。
+ *    你可以假设有 3 个可能的输入函数：sum 、fib 和 factorial 。
+ *      1. sum 函数接收两个整型参数 a 和 b ，并返回 a + b 。假设如果参数 (b, a) 已经缓存了值，其中 a != b，它不能用于参数 (a, b)。
+ *          例如，如果参数是 (3, 2) 和 (2, 3)，则应进行两个单独的调用。
+ *      2. fib 函数接收一个整型参数 n ，如果 n <= 1 则返回 1，否则返回 fib (n - 1) + fib (n - 2)。
+ *      3. factorial 函数接收一个整型参数 n ，如果 n <= 1 则返回  1 ，否则返回 factorial(n - 1) * n 。
+ * Link：https://leetcode.cn/problems/memoize/description/
+ */
+
+// 定义 TS 类型
 type Fn = (...params: number[]) => number
 
-function memoize(fn: Fn): Fn {
+// 实现记忆函数
+const memoize = (fn: Fn): Fn => {
   // 使用 Map 缓存函数参数和函数值的映射关系，并且使用闭包缓存 Map
   // Map 的键是由 ...params 转换成的字符串，值是函数的返回值
   const cache = new Map<string, number>()

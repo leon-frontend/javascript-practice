@@ -31,7 +31,7 @@
 
 // --------------------- 有序数组去重 --------------------------
 const nums = [1, 1, 2, 2, 2, 3, 4, 4, 4, 5]
-function deleteDuplicate(nums) {
+function deleteDuplicate(nums: number[]) {
   if (!nums.length || nums.length === 1) return nums
 
   let slow = 0,
