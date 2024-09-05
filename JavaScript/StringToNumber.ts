@@ -1,4 +1,4 @@
-// // 不准用 parseInt() 和
+// // 不准用 parseInt()
 // const stringToNum = (str) => {
 //   const reg = /^\d+$/
 //   if (!reg.test(str)) throw new Error('该字符串无法转换为数字类型')
@@ -11,14 +11,13 @@
 //   return res
 // }
 
-let num = stringToNum('294735')
-console.log(num, typeof num)
-// let num2 = stringToNum('')
+// ------------------ 方法 2 ------------------
+const stringToNum = (str: string) => {
+  // 将字符串转换为数字并检查是否为 NaN
+  const num = Number(str);
 
-function stringToNum(str) {
-  // const reg = /^\d+$/
-  // if (!reg.test(str)) throw new Error('字符串不能转换为数字类型')
-  if (isNaN(str)) throw new Error('字符串不能转换为数字类型!!!')
+  if (isNaN(num)) throw new Error('字符串不能转换为数字类型!!!')
+
   let res = 0
   for (let s of str) {
     let digit = s.charCodeAt(0) - '0'.charCodeAt(0)
@@ -26,3 +25,6 @@ function stringToNum(str) {
   }
   return res
 }
+
+let num = stringToNum('294735')
+console.log(num, typeof num)

@@ -18,7 +18,10 @@
       function debounce(fn, t) {
         let timer = null
         return function () {
-          if (timer) clearTimeout(timer)
+          // 如果存在定时器，则清除定时器
+          timer && clearTimeout(timer)
+
+          // 开启一个新的定时器，并调用函数
           timer = setTimeout(() => fn(), t)
         }
       }

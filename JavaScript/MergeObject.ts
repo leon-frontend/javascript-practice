@@ -21,10 +21,17 @@ let obj2 = {
   c: 'foo',
 }
 
-// --------------- 合并两个对象 ---------------
-// 合并后：{ a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], c: [ 'bar', 'foo' ] }
-const merge = (...objs) => {
-  let res = {}
+// 定义 merge 方法中的对象的 TS 类型
+type MergeObj = Record<string, any>
+
+/** 
+ * @description merge 方法用于合并两个对象
+ * @returns 返回 { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], c: [ 'bar', 'foo' ] }
+ */
+const merge = (...objs: MergeObj[]): MergeObj => {
+  // 声明返回的结果对象
+  let res: MergeObj = {}
+
   for (let obj of objs) {
     // Object.entries(obj)只会获得对象本身的属性，不会获得原型链上的属性
     // for...in会遍历原型链上的属性
@@ -35,6 +42,7 @@ const merge = (...objs) => {
       else res[key] = value
     }
   }
+
   return res
 }
 console.log(merge(obj1, obj2))

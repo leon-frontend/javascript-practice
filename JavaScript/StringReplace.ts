@@ -19,7 +19,7 @@
 // （不区分单词中每个字母的大小写)，使用将大写转换为小写的方法，用js实现这个问题。
 const text = 'you have coderson in coder li COder coder icoder'
 
-const countSum = (text) => {
+const countSum = (text: string) => {
   const lowerText = text.toLowerCase()
   const reg = /\bcoder\b/g
   const matchArr = lowerText.match(reg)
