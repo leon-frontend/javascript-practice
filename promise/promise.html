@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./myPromise.js"></script>
+  </head>
+  <body>
+    <script>
+      // ------------ 原生Promise ------------
+      // let p1 = new Promise((resolve, reject) => {
+      //   setTimeout(()=>{
+      //     resolve('ok')
+      //   }, 2000)
+      // })
+      // let result1 = p1.then(
+      //   data => {
+      //     console.log(data)
+      //     return data
+      //   },
+      //   err => console.log(err)
+      // )
+      // console.log(result1);
+      // console.log(p);
+
+      // ------------ 手写 Promise ------------
+      let p = new MyPromise((resolve, reject) => {
+        resolve('ok')
+      })
+
+      // console.log(p);
+      let result = p
+        .then(
+          (data) => {
+            console.log(data + '1')
+            return data
+          }
+          // err => { throw 'aa' }
+        )
+        .catch((err) => {
+          console.log(err)
+        })
+      console.log(result)
+
+      // let p1 = MyPromise.all()
+      // console.log(p1);
+
+      // let result = p.catch((err) => {
+      //   console.warn(err)
+      // })
+      // console.log(result);
+
+      // p.then(
+      //   data => {
+      //     console.log(data + '2')
+      //     return data
+      //   },
+      //   err => console.log(err)
+      // )
+    </script>
+  </body>
+</html>
